@@ -1,3 +1,4 @@
+# Akash 212224100004
 # EX-26-AREA-OF-RECTANGLE-USING- POINTER
 ## AIM
 To write a C Program to find area of rectangle using pointer.
@@ -10,15 +11,27 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+int main() {
+    float length, width, area;
+    float *ptrLength, *ptrWidth;
+    ptrLength = &length;
+    ptrWidth = &width;
+    scanf("%f", ptrLength);
+    scanf("%f", ptrWidth);
+    area = (*ptrLength) * (*ptrWidth);
 
-## OUTPUT
-		       	
-
-
+    printf("Area of the rectangle = %.2f\n", area);
+    return 0;
+}
+```
+## OUTPUT:
+5
+4
+Area of the rectangle = 20.00       
 ## RESULT
 Thus the program to find area of rectangle using pointer has been executed successfully
- 
- 
 
 
 # EX-27-DYNAMIC-MEMORY-ALLOCATION
@@ -34,11 +47,31 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    char *str;
+    // Allocate memory for 8 characters (7 letters + 1 for '\0')
+    str = (char *)malloc(8 * sizeof(char));
+    if (str == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+    str[0] = 'W';
+    str[1] = 'E';
+    str[2] = 'L';
+    str[3] = 'C';
+    str[4] = 'O';
+    str[5] = 'M';
+    str[6] = 'E';
+    str[7] = '\0';
+    printf("%s\n", str);
+    free(str);
+    return 0;
+}
 
-## OUTPUT
-
-
-
+## OUTPUT:
+WELCOME
 ## RESULT
 Thus the program to print 'WELCOME' using malloc() and free() has been executed successfully
  
@@ -60,11 +93,30 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+struct Student {
+    char name[50];
+    int rollNumber;
+    float marks;
+};
+int main() {
+    struct Student s;
+    fgets(s.name, sizeof(s.name), stdin);
+    scanf("%d", &s.rollNumber);
+    scanf("%f", &s.marks);
+    printf("\n--- Student Information ---\n");
+    printf("Name: %s", s.name);
+    printf("Roll Number: %d\n", s.rollNumber);
+    printf("Marks: %.2f\n", s.marks);
+    return 0;
+}
 
-
-## OUTPUT
-
-
+## OUTPUT:-
+Name: Alice
+Roll Number: 123
+Marks: 91.50
+```
 ## RESULT
 
 Thus the program to store the student information and display it using structure has been executed successfully
@@ -87,10 +139,91 @@ To write a C Program to read and store the data of 3 employees and calculate the
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+struct Employee {
+    char name[50];
+    int id;
+    float basicSalary;
+    float hra;  // House Rent Allowance
+    float da;   // Dearness Allowance
+    float grossSalary;
+};
+int main() {
+    struct Employee emp[3];
+    int i;
+    for(i = 0; i < 3; i++) {
+        printf("\nEnter details for Employee %d:\n", i + 1);
+        scanf(" %[^\n]", emp[i].name); // Read string with spaces
+        scanf("%d", &emp[i].id);
+        scanf("%f", &emp[i].basicSalary);
+        scanf("%f", &emp[i].hra);
+        scanf("%f", &emp[i].da);
+        emp[i].grossSalary = emp[i].basicSalary + emp[i].hra + emp[i].da;
+    }
 
-
+    printf("\n--- Employee Details ---\n");
+    for(i = 0; i < 3; i++) {
+        printf("\nEmployee %d:\n", i + 1);
+        printf("Name: %s\n", emp[i].name);
+        printf("ID: %d\n", emp[i].id);
+        printf("Basic Salary: %.2f\n", emp[i].basicSalary);
+        printf("HRA: %.2f\n", emp[i].hra);
+        printf("DA: %.2f\n", emp[i].da);
+        printf("Gross Salary: %.2f\n", emp[i].grossSalary);
+    }
+    return 0;
+}
+```
  ## OUTPUT
+ ```
+Enter details for Employee 1:
+Name: John Smith
+ID: 101
+Basic Salary: 15000
+HRA: 3000
+DA: 2500
 
+Enter details for Employee 2:
+Name: Alice Brown
+ID: 102
+Basic Salary: 18000
+HRA: 3500
+DA: 3000
+
+Enter details for Employee 3:
+Name: Mike Johnson
+ID: 103
+Basic Salary: 20000
+HRA: 4000
+DA: 3200
+
+--- Employee Details ---
+
+Employee 1:
+Name: John Smith
+ID: 101
+Basic Salary: 15000.00
+HRA: 3000.00
+DA: 2500.00
+Gross Salary: 20500.00
+
+Employee 2:
+Name: Alice Brown
+ID: 102
+Basic Salary: 18000.00
+HRA: 3500.00
+DA: 3000.00
+Gross Salary: 24500.00
+
+Employee 3:
+Name: Mike Johnson
+ID: 103
+Basic Salary: 20000.00
+HRA: 4000.00
+DA: 3200.00
+Gross Salary: 27200.00
+```
  
 
 ## RESULT
@@ -134,11 +267,51 @@ Step 7: Output Loop (i = 0 to 1):
 Step 8: End the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+// Define a structure to hold student information
+struct Student {
+    char name[50];
+    int rollNumber;
+    float marks[5]; // Array to store marks in 5 subjects
+    float total;
+    float average;
+};
+
+int main() {
+    struct Student s;
+    int i;
+
+    // Input student details
+    fgets(s.name, sizeof(s.name), stdin);
+    scanf("%d", &s.rollNumber);
+    printf("Enter marks in 5 subjects:\n");
+    s.total = 0;
+    for(i = 0; i < 5; i++) {
+        printf("Subject %d: ", i + 1);
+        scanf("%f", &s.marks[i]);
+        s.total += s.marks[i];
+    }
+    s.average = s.total / 5;
+    printf("\n--- Student Details ---\n");
+    printf("Name: %s", s.name);
+    printf("Roll Number: %d\n", s.rollNumber);
+    printf("Total Marks: %.2f\n", s.total);
+    printf("Average Marks: %.2f\n", s.average);
+    return 0;
+}
+```
 
 ## OUTPUT
+Alice 101
+101,433,86
+--- Student Details ---
+Name: Alice
+Roll Number: 101
+Total Marks: 433.00
+Average Marks: 86.60
 
- 
 
 ## RESULT
 
