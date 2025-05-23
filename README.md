@@ -21,7 +21,6 @@ int main() {
     scanf("%f", ptrLength);
     scanf("%f", ptrWidth);
     area = (*ptrLength) * (*ptrWidth);
-
     printf("Area of the rectangle = %.2f\n", area);
     return 0;
 }
@@ -47,11 +46,11 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+```
 #include <stdio.h>
 #include <stdlib.h>
 int main() {
     char *str;
-    // Allocate memory for 8 characters (7 letters + 1 for '\0')
     str = (char *)malloc(8 * sizeof(char));
     if (str == NULL) {
         printf("Memory allocation failed.\n");
@@ -69,7 +68,7 @@ int main() {
     free(str);
     return 0;
 }
-
+```
 ## OUTPUT:
 WELCOME
 ## RESULT
@@ -145,8 +144,8 @@ struct Employee {
     char name[50];
     int id;
     float basicSalary;
-    float hra;  // House Rent Allowance
-    float da;   // Dearness Allowance
+    float hra; 
+    float da;  
     float grossSalary;
 };
 int main() {
@@ -154,14 +153,13 @@ int main() {
     int i;
     for(i = 0; i < 3; i++) {
         printf("\nEnter details for Employee %d:\n", i + 1);
-        scanf(" %[^\n]", emp[i].name); // Read string with spaces
+        scanf(" %[^\n]", emp[i].name);
         scanf("%d", &emp[i].id);
         scanf("%f", &emp[i].basicSalary);
         scanf("%f", &emp[i].hra);
         scanf("%f", &emp[i].da);
         emp[i].grossSalary = emp[i].basicSalary + emp[i].hra + emp[i].da;
     }
-
     printf("\n--- Employee Details ---\n");
     for(i = 0; i < 3; i++) {
         printf("\nEmployee %d:\n", i + 1);
@@ -269,21 +267,16 @@ Step 8: End the program.
 ## PROGRAM
 ```
 #include <stdio.h>
-
-// Define a structure to hold student information
 struct Student {
     char name[50];
     int rollNumber;
-    float marks[5]; // Array to store marks in 5 subjects
+    float marks[5]; 
     float total;
     float average;
 };
-
 int main() {
     struct Student s;
     int i;
-
-    // Input student details
     fgets(s.name, sizeof(s.name), stdin);
     scanf("%d", &s.rollNumber);
     printf("Enter marks in 5 subjects:\n");
@@ -304,6 +297,7 @@ int main() {
 ```
 
 ## OUTPUT
+```
 Alice 101
 101,433,86
 --- Student Details ---
@@ -311,8 +305,7 @@ Name: Alice
 Roll Number: 101
 Total Marks: 433.00
 Average Marks: 86.60
-
-
+```
 ## RESULT
 
 Thus the C program to calculate the total and average of student using structure has been executed successfully.
