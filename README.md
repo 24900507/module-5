@@ -26,9 +26,11 @@ int main() {
 }
 ```
 ## OUTPUT:
+```
 5
 4
-Area of the rectangle = 20.00       
+Area of the rectangle = 20.00
+```    
 ## RESULT
 Thus the program to find area of rectangle using pointer has been executed successfully
 
@@ -238,7 +240,7 @@ Thus the C program to read and store the data of 3 employees and calculate their
 Create a C program to calculate the total and average of student using structure.
 
 ## ALGORITHM 
-
+```
 Step 1: Start the program.
 Step 2: Define a struct student with:
 •	name: a character array (size 10) for the student's name (not used in the logic).
@@ -263,7 +265,7 @@ Step 6: Override Total (Hardcoded):
 Step 7: Output Loop (i = 0 to 1):
 •	Print s[i].total for each student.
 Step 8: End the program.
-
+```
 ## PROGRAM
 ```
 #include <stdio.h>
